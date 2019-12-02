@@ -1,0 +1,42 @@
+﻿@model Domain.Categoria_Peso
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Categoria_Peso</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NCatP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NCatP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Peso_min)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Peso_min)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Peso_max)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Peso_max)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idCategoria_Peso }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

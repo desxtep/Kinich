@@ -12,107 +12,107 @@ using Domain;
 namespace Backend.Controllers
 {
     [Authorize]
-    public class Categoria_EdadController : Controller
+    public class Categoria_PesoController : Controller
     {
         private DataContext db = new DataContext();
 
-        // GET: Categoria_Edad
+        // GET: Categoria_Peso
         public async Task<ActionResult> Index()
         {
-            return View(await db.Categoria_Edad.ToListAsync());
+            return View(await db.Categoria_Peso.ToListAsync());
         }
 
-        // GET: Categoria_Edad/Details/5
+        // GET: Categoria_Peso/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Categoria_Edad categoria_Edad = await db.Categoria_Edad.FindAsync(id);
-            if (categoria_Edad == null)
+            Categoria_Peso categoria_Peso = await db.Categoria_Peso.FindAsync(id);
+            if (categoria_Peso == null)
             {
                 return HttpNotFound();
             }
-            return View(categoria_Edad);
+            return View(categoria_Peso);
         }
 
-        // GET: Categoria_Edad/Create
+        // GET: Categoria_Peso/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Categoria_Edad/Create
+        // POST: Categoria_Peso/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "idCategoria_Edad,NCatE,Edad_min,Edad_max")] Categoria_Edad categoria_Edad)
+        public async Task<ActionResult> Create([Bind(Include = "idCategoria_Peso,NCatP,Peso_min,Peso_max")] Categoria_Peso categoria_Peso)
         {
             if (ModelState.IsValid)
             {
-                db.Categoria_Edad.Add(categoria_Edad);
+                db.Categoria_Peso.Add(categoria_Peso);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(categoria_Edad);
+            return View(categoria_Peso);
         }
 
-        // GET: Categoria_Edad/Edit/5
+        // GET: Categoria_Peso/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Categoria_Edad categoria_Edad = await db.Categoria_Edad.FindAsync(id);
-            if (categoria_Edad == null)
+            Categoria_Peso categoria_Peso = await db.Categoria_Peso.FindAsync(id);
+            if (categoria_Peso == null)
             {
                 return HttpNotFound();
             }
-            return View(categoria_Edad);
+            return View(categoria_Peso);
         }
 
-        // POST: Categoria_Edad/Edit/5
+        // POST: Categoria_Peso/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "idCategoria_Edad,NCatE,Edad_min,Edad_max")] Categoria_Edad categoria_Edad)
+        public async Task<ActionResult> Edit([Bind(Include = "idCategoria_Peso,NCatP,Peso_min,Peso_max")] Categoria_Peso categoria_Peso)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(categoria_Edad).State = EntityState.Modified;
+                db.Entry(categoria_Peso).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(categoria_Edad);
+            return View(categoria_Peso);
         }
 
-        // GET: Categoria_Edad/Delete/5
+        // GET: Categoria_Peso/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Categoria_Edad categoria_Edad = await db.Categoria_Edad.FindAsync(id);
-            if (categoria_Edad == null)
+            Categoria_Peso categoria_Peso = await db.Categoria_Peso.FindAsync(id);
+            if (categoria_Peso == null)
             {
                 return HttpNotFound();
             }
-            return View(categoria_Edad);
+            return View(categoria_Peso);
         }
 
-        // POST: Categoria_Edad/Delete/5
+        // POST: Categoria_Peso/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Categoria_Edad categoria_Edad = await db.Categoria_Edad.FindAsync(id);
-            db.Categoria_Edad.Remove(categoria_Edad);
+            Categoria_Peso categoria_Peso = await db.Categoria_Peso.FindAsync(id);
+            db.Categoria_Peso.Remove(categoria_Peso);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

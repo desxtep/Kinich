@@ -169,12 +169,15 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Categoria_EdadController.cs" />
+    <Compile Include="Controllers\Categoria_PesoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\DataContextLocal.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -241,6 +244,11 @@
     <Content Include="Views\Categoria_Edad\Details.cshtml" />
     <Content Include="Views\Categoria_Edad\Edit.cshtml" />
     <Content Include="Views\Categoria_Edad\Index.cshtml" />
+    <Content Include="Views\Categoria_Peso\Create.cshtml" />
+    <Content Include="Views\Categoria_Peso\Delete.cshtml" />
+    <Content Include="Views\Categoria_Peso\Details.cshtml" />
+    <Content Include="Views\Categoria_Peso\Edit.cshtml" />
+    <Content Include="Views\Categoria_Peso\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

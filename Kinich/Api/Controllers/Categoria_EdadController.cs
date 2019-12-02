@@ -12,6 +12,7 @@ using Domain;
 
 namespace Api.Controllers
 {
+    [Authorize]
     public class Categoria_EdadController : ApiController
     {
         private DataContext db = new DataContext();
