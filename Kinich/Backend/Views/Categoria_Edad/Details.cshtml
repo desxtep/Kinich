@@ -1,0 +1,42 @@
+﻿@model Domain.Categoria_Edad
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Categoria_Edad</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NCatE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NCatE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Edad_min)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Edad_min)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Edad_max)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Edad_max)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idCategoria_Edad }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
