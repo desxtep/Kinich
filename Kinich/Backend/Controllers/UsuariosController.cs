@@ -8,17 +8,18 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Domain;
+using Backend.Models;
 
 namespace Backend.Controllers
 {
     public class UsuariosController : Controller
     {
-        private DataContext db = new DataContext();
+        private DataContextLocal db = new DataContextLocal();
 
         // GET: Usuarios
         public async Task<ActionResult> Index()
         {
-            var usuarios = db.Usuarios.Include(u => u.Categoria_Edad).Include(u => u.Categoria_Peso);
+            var usuarios = db.Usuarios.Include(u => u.Categoria_Edads).Include(u => u.Categoria_Pesos);
             return View(await usuarios.ToListAsync());
         }
 

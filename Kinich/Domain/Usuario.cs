@@ -28,9 +28,8 @@ namespace Domain
 
         [Required(ErrorMessage = "The field {0} is required")]
         
-        [Index("Usuario_Contraseña_Index", IsUnique = true)]
         [DataType(DataType.Password)]
-        [Display(Name = "Constraseña")]
+        [Display(Name = "Contraseña")]
         public string Contraseña { get; set; }
 
         //Nombre,apepat,apemat,fnac,Peso,Grado,Genero,Tipo_usuario,idCategoria_Edad,idCategoria_Peso
@@ -52,9 +51,9 @@ namespace Domain
         [Display(Name = "Apellido materno")]
         public string apemat { get; set; }
 
-        [Index("Usuario_Contraseña_Index", IsUnique = true)]
+        [Index("Usuario_Fecha_Index", IsUnique = true)]
         [DataType(DataType.DateTime)]
-        [Display(Name = "Constraseña")]
+        [Display(Name = "Fecha Nac")]
         public DateTime fnac { get; set; }
 
         public decimal Peso { get; set; }
@@ -70,9 +69,9 @@ namespace Domain
 
         public string TipoUsuario { get; set; }
 
-        public virtual Categoria_Edad Categoria_Edad { get; set; }
+        public virtual Categoria_Edad Categoria_Edads { get; set; }
 
-        public virtual Categoria_Peso Categoria_Peso { get; set; }
+        public virtual Categoria_Peso Categoria_Pesos { get; set; }
 
         public virtual ICollection<Torneo> Torneos { get; set; }
     }
