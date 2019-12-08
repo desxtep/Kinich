@@ -54,7 +54,11 @@
     <Compile Include="Categoria_Edad.cs" />
     <Compile Include="Categoria_Peso.cs" />
     <Compile Include="DataContext.cs" />
+    <Compile Include="Juez_Torneo.cs" />
+    <Compile Include="keyAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Torneo.cs" />
+    <Compile Include="Usuario.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

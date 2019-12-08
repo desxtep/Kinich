@@ -11,107 +11,116 @@ using Domain;
 
 namespace Backend.Controllers
 {
-    public class Categoria_EdadController : Controller
+    public class UsuariosController : Controller
     {
         private DataContext db = new DataContext();
 
-        // GET: Categoria_Edad
+        // GET: Usuarios
         public async Task<ActionResult> Index()
         {
-            return View(await db.Categoria_Edad.ToListAsync());
+            var usuarios = db.Usuarios.Include(u => u.Categoria_Edad).Include(u => u.Categoria_Peso);
+            return View(await usuarios.ToListAsync());
         }
 
-        // GET: Categoria_Edad/Details/5
+        // GET: Usuarios/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Categoria_Edad categoria_Edad = await db.Categoria_Edad.FindAsync(id);
-            if (categoria_Edad == null)
+            Usuario usuario = await db.Usuarios.FindAsync(id);
+            if (usuario == null)
             {
                 return HttpNotFound();
             }
-            return View(categoria_Edad);
+            return View(usuario);
         }
 
-        // GET: Categoria_Edad/Create
+        // GET: Usuarios/Create
         public ActionResult Create()
         {
+            ViewBag.idCategoria_Edad = new SelectList(db.Categoria_Edad, "idCategoria_Edad", "NCatE");
+            ViewBag.idCategoria_Peso = new SelectList(db.Categoria_Peso, "idCategoria_Peso", "NCatP");
             return View();
         }
 
-        // POST: Categoria_Edad/Create
+        // POST: Usuarios/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "idCategoria_Edad,NCatE,Edad_min,Edad_max")] Categoria_Edad categoria_Edad)
+        public async Task<ActionResult> Create([Bind(Include = "idUsuario,NombreUsuario,Correo,Contraseña,Nombre,apepat,apemat,fnac,Peso,Grado,Genero,idCategoria_Edad,idCategoria_Peso,TipoUsuario")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
-                db.Categoria_Edad.Add(categoria_Edad);
+                db.Usuarios.Add(usuario);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(categoria_Edad);
+            ViewBag.idCategoria_Edad = new SelectList(db.Categoria_Edad, "idCategoria_Edad", "NCatE", usuario.idCategoria_Edad);
+            ViewBag.idCategoria_Peso = new SelectList(db.Categoria_Peso, "idCategoria_Peso", "NCatP", usuario.idCategoria_Peso);
+            return View(usuario);
         }
 
-        // GET: Categoria_Edad/Edit/5
+        // GET: Usuarios/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Categoria_Edad categoria_Edad = await db.Categoria_Edad.FindAsync(id);
-            if (categoria_Edad == null)
+            Usuario usuario = await db.Usuarios.FindAsync(id);
+            if (usuario == null)
             {
                 return HttpNotFound();
             }
-            return View(categoria_Edad);
+            ViewBag.idCategoria_Edad = new SelectList(db.Categoria_Edad, "idCategoria_Edad", "NCatE", usuario.idCategoria_Edad);
+            ViewBag.idCategoria_Peso = new SelectList(db.Categoria_Peso, "idCategoria_Peso", "NCatP", usuario.idCategoria_Peso);
+            return View(usuario);
         }
 
-        // POST: Categoria_Edad/Edit/5
+        // POST: Usuarios/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "idCategoria_Edad,NCatE,Edad_min,Edad_max")] Categoria_Edad categoria_Edad)
+        public async Task<ActionResult> Edit([Bind(Include = "idUsuario,NombreUsuario,Correo,Contraseña,Nombre,apepat,apemat,fnac,Peso,Grado,Genero,idCategoria_Edad,idCategoria_Peso,TipoUsuario")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(categoria_Edad).State = EntityState.Modified;
+                db.Entry(usuario).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(categoria_Edad);
+            ViewBag.idCategoria_Edad = new SelectList(db.Categoria_Edad, "idCategoria_Edad", "NCatE", usuario.idCategoria_Edad);
+            ViewBag.idCategoria_Peso = new SelectList(db.Categoria_Peso, "idCategoria_Peso", "NCatP", usuario.idCategoria_Peso);
+            return View(usuario);
         }
 
-        // GET: Categoria_Edad/Delete/5
+        // GET: Usuarios/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Categoria_Edad categoria_Edad = await db.Categoria_Edad.FindAsync(id);
-            if (categoria_Edad == null)
+            Usuario usuario = await db.Usuarios.FindAsync(id);
+            if (usuario == null)
             {
                 return HttpNotFound();
             }
-            return View(categoria_Edad);
+            return View(usuario);
         }
 
-        // POST: Categoria_Edad/Delete/5
+        // POST: Usuarios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Categoria_Edad categoria_Edad = await db.Categoria_Edad.FindAsync(id);
-            db.Categoria_Edad.Remove(categoria_Edad);
+            Usuario usuario = await db.Usuarios.FindAsync(id);
+            db.Usuarios.Remove(usuario);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

@@ -16,7 +16,7 @@ namespace Domain
         [Required(ErrorMessage = "The field {0} is required")]
         [MaxLength(50, ErrorMessage = "The maximun lenght for field {0} is {1} characteres")]
         [Index("Categoria_Edad_Index", IsUnique = true)]
-        [Display(Name = "Cetegoria")]
+        [Display(Name = "NCatE")]
         public string NCatE { get; set; }
 
         [Required(ErrorMessage = "The field {0} is required")]
@@ -26,6 +26,6 @@ namespace Domain
         [MaxLength(2, ErrorMessage = "The maximun lenght for field {0} is {1} characteres")]
         public string Edad_max { get; set; }
 
-
+        public virtual ICollection<Usuario> Usuarios { get; set; }
     }
 }

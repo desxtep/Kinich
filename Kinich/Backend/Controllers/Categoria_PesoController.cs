@@ -11,7 +11,6 @@ using Domain;
 
 namespace Backend.Controllers
 {
-    [Authorize]
     public class Categoria_PesoController : Controller
     {
         private DataContext db = new DataContext();

@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace Domain
 {
@@ -9,8 +10,18 @@ namespace Domain
 
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder) {
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+        }
+
         public System.Data.Entity.DbSet<Domain.Categoria_Edad> Categoria_Edad { get; set; }
 
         public System.Data.Entity.DbSet<Domain.Categoria_Peso> Categoria_Peso { get; set; }
+
+        public System.Data.Entity.DbSet<Domain.Usuario> Usuarios { get; set; }
+
+        public System.Data.Entity.DbSet<Domain.Torneo> Torneos { get; set; }
+
+        public System.Data.Entity.DbSet<Domain.Juez_Torneo> Juez_Torneo { get; set; }
     }
 }
