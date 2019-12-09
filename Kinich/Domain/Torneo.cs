@@ -25,6 +25,9 @@ namespace Domain
         [Display(Name = "Sede")]
         public string Sede { get; set; }
 
+        [DataType(DataType.ImageUrl)]
+        public string Logo { get; set; }
+
         [DataType(DataType.Date)]
         public DateTime Fecha { get; set; }
 

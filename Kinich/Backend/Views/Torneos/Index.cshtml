@@ -21,6 +21,9 @@
             @Html.DisplayNameFor(model => model.Sede)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Logo)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Fecha)
         </th>
         <th>
@@ -42,6 +45,12 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Sede)
+        </td>
+        <td>
+            @if (!string.IsNullOrEmpty(item.Logo))
+            {
+                <img src ="@Url.Content(item.Logo)" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
+            }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Fecha)

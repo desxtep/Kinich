@@ -9,12 +9,13 @@ using System.Web;
 using System.Web.Mvc;
 using Domain;
 using Backend.Models;
+using Backend.Helpers;
 
 namespace Backend.Controllers
 {
     public class TorneosController : Controller
     {
-        private DataContextLocal db = new DataContextLocal();
+        private DataContext db = new DataContext();
 
         // GET: Torneos
         public async Task<ActionResult> Index()
@@ -50,17 +51,42 @@ namespace Backend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "idTorneo,Nombre,Sede,Fecha,HoraInicio,idUsuario,NoAreas")] Torneo torneo)
+        public async Task<ActionResult> Create(TorneoView view)
         {
+            
             if (ModelState.IsValid)
             {
+                var pic = string.Empty;
+                var folder = "~/Content/Logos";
+                if (view.LogoFile != null) {
+                    pic = FilesHelper.UploadPhoto(view.LogoFile, folder);
+                    pic = string.Format("{0}/{1}", folder, pic);
+                }
+
+                var torneo = ToTorneo(view);
+                torneo.Logo = pic;
                 db.Torneos.Add(torneo);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.idUsuario = new SelectList(db.Usuarios, "idUsuario", "NombreUsuario", torneo.idUsuario);
-            return View(torneo);
+            //ViewBag.idUsuario = new SelectList(db.Usuarios, "idUsuario", "NombreUsuario", torneo.idUsuario);
+            return View(view);
+        }
+
+        private Torneo ToTorneo(TorneoView view)
+        {
+            return new Torneo
+            {
+                idTorneo = view.idTorneo,
+                Nombre = view.Nombre,
+                Sede = view.Sede,
+                Logo = view.Logo,
+                Fecha = view.Fecha,
+                HoraInicio = view.HoraInicio,
+                idUsuario = view.idUsuario,
+                NoAreas = view.NoAreas
+            };
         }
 
         // GET: Torneos/Edit/5
@@ -84,7 +110,7 @@ namespace Backend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "idTorneo,Nombre,Sede,Fecha,HoraInicio,idUsuario,NoAreas")] Torneo torneo)
+        public async Task<ActionResult> Edit([Bind(Include = "idTorneo,Nombre,Sede,Logo,Fecha,HoraInicio,idUsuario,NoAreas")] Torneo torneo)
         {
             if (ModelState.IsValid)
             {
