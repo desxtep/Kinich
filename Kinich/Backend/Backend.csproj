@@ -168,10 +168,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CalificacionsController.cs" />
     <Compile Include="Controllers\Categoria_EdadController.cs" />
     <Compile Include="Controllers\Categoria_PesoController.cs" />
+    <Compile Include="Controllers\CombatesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Juez_TorneoController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\Participante_CombateController.cs" />
+    <Compile Include="Controllers\Participante_FormaController.cs" />
+    <Compile Include="Controllers\TorneosController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -265,6 +271,26 @@
     <Content Include="Views\Juez_Torneo\Details.cshtml" />
     <Content Include="Views\Juez_Torneo\Edit.cshtml" />
     <Content Include="Views\Juez_Torneo\Index.cshtml" />
+    <Content Include="Views\Combates\Create.cshtml" />
+    <Content Include="Views\Combates\Delete.cshtml" />
+    <Content Include="Views\Combates\Details.cshtml" />
+    <Content Include="Views\Combates\Edit.cshtml" />
+    <Content Include="Views\Combates\Index.cshtml" />
+    <Content Include="Views\Participante_Combate\Create.cshtml" />
+    <Content Include="Views\Participante_Combate\Delete.cshtml" />
+    <Content Include="Views\Participante_Combate\Details.cshtml" />
+    <Content Include="Views\Participante_Combate\Edit.cshtml" />
+    <Content Include="Views\Participante_Combate\Index.cshtml" />
+    <Content Include="Views\Participante_Forma\Create.cshtml" />
+    <Content Include="Views\Participante_Forma\Delete.cshtml" />
+    <Content Include="Views\Participante_Forma\Details.cshtml" />
+    <Content Include="Views\Participante_Forma\Edit.cshtml" />
+    <Content Include="Views\Participante_Forma\Index.cshtml" />
+    <Content Include="Views\Calificacions\Create.cshtml" />
+    <Content Include="Views\Calificacions\Delete.cshtml" />
+    <Content Include="Views\Calificacions\Details.cshtml" />
+    <Content Include="Views\Calificacions\Edit.cshtml" />
+    <Content Include="Views\Calificacions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Domain.Juez_Torneo>
+﻿@model IEnumerable<Domain.Participante_Combate>
 
 @{
     ViewBag.Title = "Index";
@@ -21,7 +21,13 @@
             @Html.DisplayNameFor(model => model.Area)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Autorizado)
+            @Html.DisplayNameFor(model => model.Color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hora_Aprox)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Resultado)
         </th>
         <th></th>
     </tr>
@@ -38,12 +44,18 @@
             @Html.DisplayFor(modelItem => item.Area)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Autorizado)
+            @Html.DisplayFor(modelItem => item.Color)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id_user_juez }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id_user_juez }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id_user_juez })
+            @Html.DisplayFor(modelItem => item.Hora_Aprox)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Resultado)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idFicha }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idFicha }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idFicha })
         </td>
     </tr>
 }

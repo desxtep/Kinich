@@ -34,9 +34,17 @@ namespace Domain
         
         public int idUsuario { get; set; }
 
+        
+
         public int NoAreas { get; set; }
 
-        public virtual Usuario Usuario { get; set; }
+        public virtual Usuario Usuarios { get; set; }
         public virtual ICollection<Juez_Torneo> Juez_Torneos { get; set; }
+
+        public virtual ICollection<Combate> Combates { get; set; }
+
+        public virtual ICollection<Participante_Combate> Participante_Combates { get; set; }
+
+        public virtual ICollection<Participante_Forma> Participante_Formas { get; set; }
     }
 }

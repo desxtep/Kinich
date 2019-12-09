@@ -1,0 +1,42 @@
+﻿@model Domain.Calificacion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Calificacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Participante_Forma.Nombre_Forma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Participante_Forma.Nombre_Forma)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.NombreUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.NombreUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Calificaion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Calificaion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idCalif }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

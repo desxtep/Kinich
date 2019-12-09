@@ -1,4 +1,4 @@
-﻿@model Domain.Juez_Torneo
+﻿@model Domain.Combate
 
 @{
     ViewBag.Title = "Details";
@@ -7,7 +7,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Juez_Torneo</h4>
+    <h4>Combate</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -27,24 +27,32 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Area)
+            @Html.DisplayNameFor(model => model.Id_part1)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Area)
+            @Html.DisplayFor(model => model.Id_part1)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Autorizado)
+            @Html.DisplayNameFor(model => model.Id_part2)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Autorizado)
+            @Html.DisplayFor(model => model.Id_part2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nivel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nivel)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_user_juez }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idCombate }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -1,0 +1,90 @@
+﻿@model Domain.Participante_Forma
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Participante_Forma</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Torneo.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Torneo.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.NombreUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.NombreUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Area)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Area)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre_Forma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre_Forma)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo_Forma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo_Forma)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hora_Aprox)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hora_Aprox)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Duracion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Duracion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Resultado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Resultado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idFicha }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

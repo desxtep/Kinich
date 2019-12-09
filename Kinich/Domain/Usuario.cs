@@ -16,7 +16,7 @@ namespace Domain
         [Required(ErrorMessage = "The field {0} is required")]
         [MaxLength(50, ErrorMessage = "The maximun lenght for field {0} is {1} characteres")]
         [Index("Usuario_NickName_Index", IsUnique = true)]
-        [Display(Name = "Nombre")]
+        [Display(Name = "NombreUsuario")]
         public string NombreUsuario { get; set; }
 
         [Required(ErrorMessage = "The field {0} is required")]
@@ -52,7 +52,7 @@ namespace Domain
         public string apemat { get; set; }
 
         [Index("Usuario_Fecha_Index", IsUnique = true)]
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date)]
         [Display(Name = "Fecha Nac")]
         public DateTime fnac { get; set; }
 
@@ -74,5 +74,13 @@ namespace Domain
         public virtual Categoria_Peso Categoria_Pesos { get; set; }
 
         public virtual ICollection<Torneo> Torneos { get; set; }
+
+        public virtual ICollection<Combate> Combates { get; set; }
+
+        public virtual ICollection<Participante_Combate> Participante_Combates { get; set; }
+
+        public virtual ICollection<Participante_Forma> Participante_Formas { get; set; }
+
+        public virtual ICollection<Calificacion> Calificacion { get; set; }
     }
 }
