@@ -53,7 +53,7 @@ namespace Backend.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(TorneoView view)
         {
-            
+            var torneo = ToTorneo(view);
             if (ModelState.IsValid)
             {
                 var pic = string.Empty;
@@ -63,14 +63,14 @@ namespace Backend.Controllers
                     pic = string.Format("{0}/{1}", folder, pic);
                 }
 
-                var torneo = ToTorneo(view);
+                torneo = ToTorneo(view);
                 torneo.Logo = pic;
                 db.Torneos.Add(torneo);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            //ViewBag.idUsuario = new SelectList(db.Usuarios, "idUsuario", "NombreUsuario", torneo.idUsuario);
+            ViewBag.idUsuario = new SelectList(db.Usuarios, "idUsuario", "NombreUsuario", torneo.idUsuario);
             return View(view);
         }
 
@@ -92,17 +92,34 @@ namespace Backend.Controllers
         // GET: Torneos/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Torneo torneo = await db.Torneos.FindAsync(id);
+            var torneo = await db.Torneos.FindAsync(id);
             if (torneo == null)
             {
                 return HttpNotFound();
             }
+            var view = TorneoView(torneo);
             ViewBag.idUsuario = new SelectList(db.Usuarios, "idUsuario", "NombreUsuario", torneo.idUsuario);
-            return View(torneo);
+            return View(view);
+        }
+
+        private TorneoView TorneoView(Torneo torneo)
+        {
+            return new TorneoView
+            {
+                idTorneo = torneo.idTorneo,
+                Nombre = torneo.Nombre,
+                Sede = torneo.Sede,
+                Logo = torneo.Logo,
+                Fecha = torneo.Fecha,
+                HoraInicio = torneo.HoraInicio,
+                idUsuario = torneo.idUsuario,
+                NoAreas = torneo.NoAreas
+            };
         }
 
         // POST: Torneos/Edit/5
@@ -110,16 +127,28 @@ namespace Backend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "idTorneo,Nombre,Sede,Logo,Fecha,HoraInicio,idUsuario,NoAreas")] Torneo torneo)
+        public async Task<ActionResult> Edit(TorneoView view)
         {
+            var torneo = ToTorneo(view);
             if (ModelState.IsValid)
             {
+                var pic = view.Logo;
+                var folder = "~/Content/Logos";
+                if (view.LogoFile != null)
+                {
+                    pic = FilesHelper.UploadPhoto(view.LogoFile, folder);
+                    pic = string.Format("{0}/{1}", folder, pic);
+                }
+
+                torneo = ToTorneo(view);
+                torneo.Logo = pic;
+
                 db.Entry(torneo).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             ViewBag.idUsuario = new SelectList(db.Usuarios, "idUsuario", "NombreUsuario", torneo.idUsuario);
-            return View(torneo);
+            return View(view);
         }
 
         // GET: Torneos/Delete/5

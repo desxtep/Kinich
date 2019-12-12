@@ -55,6 +55,7 @@ namespace Backend.Controllers
         {
             if (ModelState.IsValid)
             {
+                usuario.Contraseña = Usuario.GetSHA256(usuario.Contraseña);
                 db.Usuarios.Add(usuario);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
