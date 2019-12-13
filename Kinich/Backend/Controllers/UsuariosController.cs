@@ -14,15 +14,14 @@ namespace Backend.Controllers
 {
     public class UsuariosController : Controller
     {
-        private DataContextLocal db = new DataContextLocal();
+        private DataContext db = new DataContext();
         private ProyectoEntities1 db2 = new ProyectoEntities1();
+
 
         // GET: Usuarios
         public async Task<ActionResult> Index()
         {
-            
             var usuarios = db.Usuarios.Include(u => u.Categoria_Edads).Include(u => u.Categoria_Pesos);
-           
             return View(await usuarios.ToListAsync());
         }
 
@@ -62,7 +61,7 @@ namespace Backend.Controllers
                 db2.registrar(usuario.NombreUsuario, usuario.Correo, usuario.Contraseña, usuario.Nombre, usuario.apepat, usuario.apemat, usuario.fnac, usuario.Peso, usuario.Grado, usuario.Genero, usuario.idCategoria_Edad, usuario.idCategoria_Peso);
                 db2.Categoria(usuario.idUsuario);
                 //db.Usuarios.Add(usuario);
-                //await db2.SaveChangesAsync();
+                //await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
@@ -98,7 +97,7 @@ namespace Backend.Controllers
             if (ModelState.IsValid)
             {
                 usuario.Contraseña = Usuario.GetSHA256(usuario.Contraseña);
-              
+
                 db.Entry(usuario).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 db2.Categoria(usuario.idUsuario);

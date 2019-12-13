@@ -143,6 +143,19 @@ namespace Backend.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("hacertorneo", nombreParameter, sedeParameter, logoParameter, fechaParameter, horaParameter, idParameter);
         }
     
+        public virtual int lugarescatforma(Nullable<int> idTorneo, Nullable<int> idUsuario)
+        {
+            var idTorneoParameter = idTorneo.HasValue ?
+                new ObjectParameter("idTorneo", idTorneo) :
+                new ObjectParameter("idTorneo", typeof(int));
+    
+            var idUsuarioParameter = idUsuario.HasValue ?
+                new ObjectParameter("idUsuario", idUsuario) :
+                new ObjectParameter("idUsuario", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("lugarescatforma", idTorneoParameter, idUsuarioParameter);
+        }
+    
         public virtual int promedio()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("promedio");

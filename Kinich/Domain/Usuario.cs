@@ -55,13 +55,13 @@ namespace Domain
 
         [Required(ErrorMessage = "The field {0} is required")]
         [MaxLength(50, ErrorMessage = "The maximun lenght for field {0} is {1} characteres")]
-        [Index("Usuario_Apepat_Index", IsUnique = true)]
+       
         [Display(Name = "Apellido paterno")]
         public string apepat { get; set; }
 
         [Required(ErrorMessage = "The field {0} is required")]
         [MaxLength(50, ErrorMessage = "The maximun lenght for field {0} is {1} characteres")]
-        [Index("Usuario_Apemat_Index", IsUnique = true)]
+       
         [Display(Name = "Apellido materno")]
         public string apemat { get; set; }
 

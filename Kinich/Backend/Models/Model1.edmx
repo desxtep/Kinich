@@ -78,6 +78,10 @@ warning 6002: The table/view 'Proyecto.dbo.reporte_formas' does not have a prima
           <Parameter Name="Hora" Type="datetime" Mode="In" />
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
+        <Function Name="lugarescatforma" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idTorneo" Type="int" Mode="In" />
+          <Parameter Name="idUsuario" Type="int" Mode="In" />
+        </Function>
         <Function Name="promedio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="registrar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="usuario" Type="varchar" Mode="In" />
@@ -190,6 +194,10 @@ warning 6002: The table/view 'Proyecto.dbo.reporte_formas' does not have a prima
             <Parameter Name="Hora" Mode="In" Type="DateTime" />
             <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="lugarescatforma">
+            <Parameter Name="idTorneo" Mode="In" Type="Int32" />
+            <Parameter Name="idUsuario" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="promedio" />
           <FunctionImport Name="registrar">
             <Parameter Name="usuario" Mode="In" Type="String" />
@@ -242,6 +250,7 @@ warning 6002: The table/view 'Proyecto.dbo.reporte_formas' does not have a prima
           <FunctionImportMapping FunctionImportName="fichacombate" FunctionName="ProyectoModel.Store.fichacombate" />
           <FunctionImportMapping FunctionImportName="fichaforma" FunctionName="ProyectoModel.Store.fichaforma" />
           <FunctionImportMapping FunctionImportName="hacertorneo" FunctionName="ProyectoModel.Store.hacertorneo" />
+          <FunctionImportMapping FunctionImportName="lugarescatforma" FunctionName="ProyectoModel.Store.lugarescatforma" />
           <FunctionImportMapping FunctionImportName="promedio" FunctionName="ProyectoModel.Store.promedio" />
           <FunctionImportMapping FunctionImportName="registrar" FunctionName="ProyectoModel.Store.registrar" />
         </EntityContainerMapping>

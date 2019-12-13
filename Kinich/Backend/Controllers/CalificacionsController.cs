@@ -31,6 +31,7 @@ namespace Backend.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            db2.promedio();
             Calificacion calificacion = await db.Calificacions.FindAsync(id);
             if (calificacion == null)
             {
@@ -58,7 +59,7 @@ namespace Backend.Controllers
             {
                 
                 db.Calificacions.Add(calificacion);
-                db2.promedio();
+           
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
