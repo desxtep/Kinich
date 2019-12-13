@@ -16,11 +16,13 @@ namespace Backend.Controllers
     public class TorneosController : Controller
     {
         private DataContext db = new DataContext();
+        private ProyectoEntities1 db2 = new ProyectoEntities1();
 
         // GET: Torneos
         public async Task<ActionResult> Index()
         {
             var torneos = db.Torneos.Include(t => t.Usuarios);
+           
             return View(await torneos.ToListAsync());
         }
 
@@ -32,6 +34,7 @@ namespace Backend.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Torneo torneo = await db.Torneos.FindAsync(id);
+            
             if (torneo == null)
             {
                 return HttpNotFound();
@@ -53,6 +56,7 @@ namespace Backend.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(TorneoView view)
         {
+            
             var torneo = ToTorneo(view);
             if (ModelState.IsValid)
             {
@@ -65,8 +69,9 @@ namespace Backend.Controllers
 
                 torneo = ToTorneo(view);
                 torneo.Logo = pic;
-                db.Torneos.Add(torneo);
-                await db.SaveChangesAsync();
+                db2.hacertorneo(torneo.Nombre,torneo.Sede,torneo.Logo, torneo.Fecha,torneo.HoraInicio,torneo.idUsuario );
+               // db.Torneos.Add(torneo);
+                //await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 

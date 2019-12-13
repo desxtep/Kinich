@@ -8,13 +8,14 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Domain;
+using Backend.Models;
 
 namespace Backend.Controllers
 {
     public class Participante_FormaController : Controller
     {
         private DataContext db = new DataContext();
-
+        private ProyectoEntities1 db2 = new ProyectoEntities1();
         // GET: Participante_Forma
         public async Task<ActionResult> Index()
         {
@@ -54,8 +55,9 @@ namespace Backend.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Participante_Forma.Add(participante_Forma);
-                await db.SaveChangesAsync();
+                db2.fichaforma(participante_Forma.idUsuario,participante_Forma.idTorneo,participante_Forma.Tipo_Forma,participante_Forma.Nombre_Forma,participante_Forma.Duracion,participante_Forma.Resultado, participante_Forma.Cal);
+               // db.Participante_Forma.Add(participante_Forma);
+               // await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 

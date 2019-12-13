@@ -8,12 +8,14 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Domain;
+using Backend.Models;
 
 namespace Backend.Controllers
 {
     public class Participante_CombateController : Controller
     {
         private DataContext db = new DataContext();
+        private ProyectoEntities1 db2 = new ProyectoEntities1();
 
         // GET: Participante_Combate
         public async Task<ActionResult> Index()
@@ -54,8 +56,9 @@ namespace Backend.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Participante_Combate.Add(participante_Combate);
-                await db.SaveChangesAsync();
+                db2.fichacombate(participante_Combate.idUsuario, participante_Combate.idTorneo, participante_Combate.Color, participante_Combate.Resultado);
+               // db.Participante_Combate.Add(participante_Combate);
+               // await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 

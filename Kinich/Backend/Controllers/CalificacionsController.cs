@@ -8,12 +8,14 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Domain;
+using Backend.Models;
 
 namespace Backend.Controllers
 {
     public class CalificacionsController : Controller
     {
         private DataContext db = new DataContext();
+        private ProyectoEntities1 db2 = new ProyectoEntities1();
 
         // GET: Calificacions
         public async Task<ActionResult> Index()
@@ -54,7 +56,9 @@ namespace Backend.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 db.Calificacions.Add(calificacion);
+                db2.promedio();
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

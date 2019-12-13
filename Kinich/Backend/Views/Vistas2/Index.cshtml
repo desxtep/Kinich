@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Backend.Models.reporte_formas>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Reporte Formas</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreUsuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo_forma)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre_forma)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Resultado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cal)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo_forma)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre_forma)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Resultado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cal)
+            </td>
+        </tr>
+    }
+
+</table>

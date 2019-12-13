@@ -8,17 +8,20 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Domain;
+using Backend.Models;
 
 namespace Backend.Controllers
 {
     public class Categoria_EdadController : Controller
     {
         private DataContext db = new DataContext();
+        private ProyectoEntities1 db2 = new ProyectoEntities1();
 
         // GET: Categoria_Edad
         public async Task<ActionResult> Index()
         {
             return View(await db.Categoria_Edad.ToListAsync());
+           // return View(await db2.info_usuario.ToListAsync());
         }
 
         // GET: Categoria_Edad/Details/5

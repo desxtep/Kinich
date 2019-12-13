@@ -19,16 +19,45 @@
                 </button>
                 @Html.ActionLink("Kinich", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse" id="navbarNavDropdown">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Categoria_Edad", "Index", "Categoria_Edad")</li>
-                    <li>@Html.ActionLink("Categoria_Peso", "Index", "Categoria_Peso")</li>
+
+                    <li>@Html.ActionLink("Cat_Edad", "Index", "Categoria_Edad")</li>
+                    <li>@Html.ActionLink("Cat_Peso", "Index", "Categoria_Peso")</li>
                     <li>@Html.ActionLink("Usuarios", "Index", "Usuarios")</li>
                     <li>@Html.ActionLink("Torneos", "Index", "Torneos")</li>
+                    <li>@Html.ActionLink("Par_Combate", "Index", "Participante_Combate")</li>
+                    <li>@Html.ActionLink("Par_Forma", "Index", "Participante_Forma")</li>
+                    <li>@Html.ActionLink("Juez_Torneo", "Index", "Juez_Torneo")</li>
+                    <li>@Html.ActionLink("Combates", "Index", "Combates")</li>
+                    <li>@Html.ActionLink("Califi", "Index", "Calificacions")</li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Vistas
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a>@Html.ActionLink("Usuarios", "Index", "Vistas")</a></li>
+                            <li><a>@Html.ActionLink("Formas", "Index", "Vistas2")</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Reportes
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a>@Html.ActionLink("Reporte1", "Index", "Vistas")</a></li>
+                            <li><a>@Html.ActionLink("Reporte2", "Index", "Vistas2")</a></li>
+                            <li><a>@Html.ActionLink("Reporte3", "Index", "Vistas2")</a></li>
+                            <li><a>@Html.ActionLink("Reporte4", "Index", "Vistas2")</a></li>
+                            <li><a>@Html.ActionLink("Reporte5", "Index", "Vistas2")</a></li>
+                            <li><a>@Html.ActionLink("Reporte6", "Index", "Vistas2")</a></li>
+                        </ul>
+                    </li>
                 </ul>
+               
+                </div>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>

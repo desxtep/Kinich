@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProyectoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Proyecto.dbo.info_usuario' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="info_usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+            <PropertyRef Name="NombreUsuario" />
+            <PropertyRef Name="Correo" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Fecha de Nacimiento" />
+            <PropertyRef Name="Peso" />
+            <PropertyRef Name="Categoria Edad" />
+            <PropertyRef Name="Categoria Peso" />
+          </Key>
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+          <Property Name="NombreUsuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="152" Nullable="false" />
+          <Property Name="Fecha de Nacimiento" Type="datetime" Nullable="false" />
+          <Property Name="Peso" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Categoria Edad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Categoria Peso" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Proyecto.dbo.reporte_formas' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="reporte_formas">
+          <Key>
+            <PropertyRef Name="NombreUsuario" />
+            <PropertyRef Name="Tipo_forma" />
+            <PropertyRef Name="Nombre_forma" />
+            <PropertyRef Name="Resultado" />
+            <PropertyRef Name="cal" />
+          </Key>
+          <Property Name="NombreUsuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tipo_forma" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre_forma" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Resultado" Type="int" Nullable="false" />
+          <Property Name="cal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <Function Name="calificar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="juez" Type="int" Mode="In" />
+          <Parameter Name="cal" Type="decimal" Mode="In" />
+          <Parameter Name="idTorneo" Type="int" Mode="In" />
+          <Parameter Name="idUsuario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="cuentaarea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fichacombate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="idTorneo" Type="int" Mode="In" />
+          <Parameter Name="color" Type="varchar" Mode="In" />
+          <Parameter Name="res" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fichaforma" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="idTorneo" Type="int" Mode="In" />
+          <Parameter Name="Tipo" Type="varchar" Mode="In" />
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="duracion" Type="int" Mode="In" />
+          <Parameter Name="res" Type="int" Mode="In" />
+          <Parameter Name="cal" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="hacertorneo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="sede" Type="varchar" Mode="In" />
+          <Parameter Name="logo" Type="varchar" Mode="In" />
+          <Parameter Name="Fecha" Type="datetime" Mode="In" />
+          <Parameter Name="Hora" Type="datetime" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="promedio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="registrar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="usuario" Type="varchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="pass" Type="varchar" Mode="In" />
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="apepat" Type="varchar" Mode="In" />
+          <Parameter Name="apemat" Type="varchar" Mode="In" />
+          <Parameter Name="fnac" Type="date" Mode="In" />
+          <Parameter Name="Peso" Type="decimal" Mode="In" />
+          <Parameter Name="Grado" Type="int" Mode="In" />
+          <Parameter Name="Genero" Type="varchar" Mode="In" />
+          <Parameter Name="idcatEdad" Type="int" Mode="In" />
+          <Parameter Name="idcatPeso" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="ProyectoModelStoreContainer">
+          <EntitySet Name="info_usuario" EntityType="Self.info_usuario" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [info_usuario].[idUsuario] AS [idUsuario], 
+    [info_usuario].[NombreUsuario] AS [NombreUsuario], 
+    [info_usuario].[Correo] AS [Correo], 
+    [info_usuario].[Nombre] AS [Nombre], 
+    [info_usuario].[Fecha de Nacimiento] AS [Fecha de Nacimiento], 
+    [info_usuario].[Peso] AS [Peso], 
+    [info_usuario].[Categoria Edad] AS [Categoria Edad], 
+    [info_usuario].[Categoria Peso] AS [Categoria Peso]
+    FROM [dbo].[info_usuario] AS [info_usuario]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="reporte_formas" EntityType="Self.reporte_formas" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [reporte_formas].[NombreUsuario] AS [NombreUsuario], 
+    [reporte_formas].[Tipo_forma] AS [Tipo_forma], 
+    [reporte_formas].[Nombre_forma] AS [Nombre_forma], 
+    [reporte_formas].[Resultado] AS [Resultado], 
+    [reporte_formas].[cal] AS [cal]
+    FROM [dbo].[reporte_formas] AS [reporte_formas]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProyectoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="info_usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+            <PropertyRef Name="NombreUsuario" />
+            <PropertyRef Name="Correo" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Fecha_de_Nacimiento" />
+            <PropertyRef Name="Peso" />
+            <PropertyRef Name="Categoria_Edad" />
+            <PropertyRef Name="Categoria_Peso" />
+          </Key>
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <Property Name="NombreUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="152" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fecha_de_Nacimiento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Peso" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Categoria_Edad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Categoria_Peso" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="reporte_formas">
+          <Key>
+            <PropertyRef Name="NombreUsuario" />
+            <PropertyRef Name="Tipo_forma" />
+            <PropertyRef Name="Nombre_forma" />
+            <PropertyRef Name="Resultado" />
+            <PropertyRef Name="cal" />
+          </Key>
+          <Property Name="NombreUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tipo_forma" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre_forma" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Resultado" Type="Int32" Nullable="false" />
+          <Property Name="cal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ProyectoEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="info_usuario" EntityType="Self.info_usuario" />
+          <EntitySet Name="reporte_formas" EntityType="Self.reporte_formas" />
+          <FunctionImport Name="calificar">
+            <Parameter Name="juez" Mode="In" Type="Int32" />
+            <Parameter Name="cal" Mode="In" Type="Decimal" />
+            <Parameter Name="idTorneo" Mode="In" Type="Int32" />
+            <Parameter Name="idUsuario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Categoria">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="fichacombate">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="idTorneo" Mode="In" Type="Int32" />
+            <Parameter Name="color" Mode="In" Type="String" />
+            <Parameter Name="res" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="fichaforma">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="idTorneo" Mode="In" Type="Int32" />
+            <Parameter Name="Tipo" Mode="In" Type="String" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="duracion" Mode="In" Type="Int32" />
+            <Parameter Name="res" Mode="In" Type="Int32" />
+            <Parameter Name="cal" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="hacertorneo">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="sede" Mode="In" Type="String" />
+            <Parameter Name="logo" Mode="In" Type="String" />
+            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="Hora" Mode="In" Type="DateTime" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="promedio" />
+          <FunctionImport Name="registrar">
+            <Parameter Name="usuario" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="pass" Mode="In" Type="String" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="apepat" Mode="In" Type="String" />
+            <Parameter Name="apemat" Mode="In" Type="String" />
+            <Parameter Name="fnac" Mode="In" Type="DateTime" />
+            <Parameter Name="Peso" Mode="In" Type="Decimal" />
+            <Parameter Name="Grado" Mode="In" Type="Int32" />
+            <Parameter Name="Genero" Mode="In" Type="String" />
+            <Parameter Name="idcatEdad" Mode="In" Type="Int32" />
+            <Parameter Name="idcatPeso" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProyectoModelStoreContainer" CdmEntityContainer="ProyectoEntities1">
+          <EntitySetMapping Name="info_usuario">
+            <EntityTypeMapping TypeName="ProyectoModel.info_usuario">
+              <MappingFragment StoreEntitySet="info_usuario">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Fecha_de_Nacimiento" ColumnName="Fecha de Nacimiento" />
+                <ScalarProperty Name="Peso" ColumnName="Peso" />
+                <ScalarProperty Name="Categoria_Edad" ColumnName="Categoria Edad" />
+                <ScalarProperty Name="Categoria_Peso" ColumnName="Categoria Peso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reporte_formas">
+            <EntityTypeMapping TypeName="ProyectoModel.reporte_formas">
+              <MappingFragment StoreEntitySet="reporte_formas">
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="Tipo_forma" ColumnName="Tipo_forma" />
+                <ScalarProperty Name="Nombre_forma" ColumnName="Nombre_forma" />
+                <ScalarProperty Name="Resultado" ColumnName="Resultado" />
+                <ScalarProperty Name="cal" ColumnName="cal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="calificar" FunctionName="ProyectoModel.Store.calificar" />
+          <FunctionImportMapping FunctionImportName="Categoria" FunctionName="ProyectoModel.Store.Categoria" />
+          <FunctionImportMapping FunctionImportName="fichacombate" FunctionName="ProyectoModel.Store.fichacombate" />
+          <FunctionImportMapping FunctionImportName="fichaforma" FunctionName="ProyectoModel.Store.fichaforma" />
+          <FunctionImportMapping FunctionImportName="hacertorneo" FunctionName="ProyectoModel.Store.hacertorneo" />
+          <FunctionImportMapping FunctionImportName="promedio" FunctionName="ProyectoModel.Store.promedio" />
+          <FunctionImportMapping FunctionImportName="registrar" FunctionName="ProyectoModel.Store.registrar" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

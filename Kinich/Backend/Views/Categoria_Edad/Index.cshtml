@@ -23,23 +23,24 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NCatE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Edad_min)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Edad_max)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idCategoria_Edad }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idCategoria_Edad }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idCategoria_Edad })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NCatE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Edad_min)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Edad_max)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idCategoria_Edad }) |
+                @Html.ActionLink("Details", "Details", new { id = item.idCategoria_Edad }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idCategoria_Edad })
+            </td>
+        </tr>
+    }
 
 </table>
